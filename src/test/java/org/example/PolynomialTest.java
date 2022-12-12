@@ -28,4 +28,28 @@ public class PolynomialTest {
             { new double[] { 0.0, 17.0, 0.0, 0.0, -11.0 }, 4 },
         };
     }
+
+    @Test(dataProvider = "getValueAt_ReturnsValue_Data")
+    public static void getValueAt_ReturnsValue_Test(
+        final Polynomial polynomial,
+        final double argumentValue,
+        final double expectedPolynomialValue
+    ) {
+        double actualPolinomialValue = polynomial.getValueAt(argumentValue);
+        assertEquals(actualPolinomialValue, expectedPolynomialValue);
+    }
+
+    @DataProvider
+    public static Object[][] getValueAt_ReturnsValue_Data() {
+        return new Object[][] {
+            { new Polynomial(new double[] { 1.0, 3.0, 3.0, 1.0 }), 0.0, 1.0 },
+            { new Polynomial(new double[] { 1.0, 3.0, 3.0, 1.0 }), -1.0, 0.0 },
+            { new Polynomial(new double[] { 1.0, 3.0, 3.0, 1.0 }), 1.0, 8.0 },
+            { new Polynomial(new double[] { 0.0, 0.0, 0.0, 1.0 }), 2.0, 8.0 },
+            { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), -1.0, 5.0 },
+            { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), 1.0, 5.0 },
+            { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), 0.0, 5.0 },
+            { new Polynomial(new double[] { 0.0, 0.0, 0.0 }), 12.0, 0.0 },
+        };
+    }
 }
