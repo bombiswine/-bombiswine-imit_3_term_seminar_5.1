@@ -29,6 +29,21 @@ public class PolynomialTest {
         };
     }
 
+    @Test(
+        dataProvider = "polynomialConstructor_ThrowsIllegalArgumentException_Data",
+        expectedExceptions = IllegalArgumentException.class
+    )
+    public static void polynomialConstructor_ThrowsIllegalArgumentException_Test(
+        final double[] coefficients
+    ) {
+        new Polynomial(coefficients);
+    }
+
+    @DataProvider
+    public static Object[][] polynomialConstructor_ThrowsIllegalArgumentException_Data() {
+        return new Object[][] { { null }, { new double[0] } };
+    }
+
     @Test(dataProvider = "getValueAt_ReturnsValue_Data")
     public static void getValueAt_ReturnsValue_Test(
         final Polynomial polynomial,
@@ -49,6 +64,31 @@ public class PolynomialTest {
             { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), -1.0, 5.0 },
             { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), 1.0, 5.0 },
             { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), 0.0, 5.0 },
+            { new Polynomial(new double[] { 0.0, 0.0, 0.0 }), 12.0, 0.0 },
+        };
+    }
+
+    @Test(dataProvider = "getDerivativeValueAt_ReturnsValue_Data")
+    public static void getDerivativeValueAt_ReturnsValue_Test(
+        final Polynomial polynomial,
+        final double argumentValue,
+        final double expectedDerivativeValue
+    ) {
+        double actualDerivativeValue = polynomial.getDerivativeValueAt(argumentValue);
+        assertEquals(actualDerivativeValue, expectedDerivativeValue);
+    }
+
+    @DataProvider
+    public static Object[][] getDerivativeValueAt_ReturnsValue_Data() {
+        return new Object[][] {
+            { new Polynomial(new double[] { 1.0, 3.0, 3.0, 1.0 }), 0.0, 3.0 },
+            { new Polynomial(new double[] { 1.0, 3.0, 3.0, 1.0 }), 1.0, 12.0 },
+            { new Polynomial(new double[] { 1.0, 3.0, 3.0, 1.0 }), -1.0, 0.0 },
+            { new Polynomial(new double[] { 0.0, 0.0, 0.0, 1.0 }), 2.0, 12.0 },
+            { new Polynomial(new double[] { 0.0, 0.0, 1.0, 0.0 }), 1.0, 2.0 },
+            { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), -12.0, 0.0 },
+            { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), 12.0, 0.0 },
+            { new Polynomial(new double[] { 5.0, 0.0, 0.0 }), 0.0, 0.0 },
             { new Polynomial(new double[] { 0.0, 0.0, 0.0 }), 12.0, 0.0 },
         };
     }
