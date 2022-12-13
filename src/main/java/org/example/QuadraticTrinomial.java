@@ -16,7 +16,7 @@ public class QuadraticTrinomial extends Polynomial {
         return coefficients[1] * coefficients[1] - 4 * coefficients[2] * coefficients[0];
     }
 
-    public PolynomialRoot[] solveQuadraticEquation() {
+    public PolynomialRoot[] getRoots() {
         // initially we assume that Trinomial has got no roots
         PolynomialRoot[] solution = new PolynomialRoot[] {
             new PolynomialRoot(Double.NaN, Double.NaN )
