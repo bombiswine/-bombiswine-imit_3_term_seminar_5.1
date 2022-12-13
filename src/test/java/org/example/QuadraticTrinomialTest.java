@@ -49,8 +49,8 @@ public class QuadraticTrinomialTest {
         };
     }
 
-    @Test(dataProvider = "getRoots_PositiveCase_Data")
-    public static void getRoots_PositiveCase_Test(
+    @Test(dataProvider = "getRoots_Data")
+    public static void getRoots_Test(
         final QuadraticTrinomial polynomial,
         final PolynomialRoot... expectedRoots
     ) {
@@ -59,7 +59,7 @@ public class QuadraticTrinomialTest {
     }
 
     @DataProvider
-    public static Object[][] getRoots_PositiveCase_Data() {
+    public static Object[][] getRoots_Data() {
         return new Object[][] {
             {
                 new QuadraticTrinomial(new double[] { -5.0, 4.0, 1.0 }),
