@@ -52,7 +52,7 @@ public class QuadraticTrinomialTest {
     @Test(dataProvider = "getRoots_PositiveCase_Data")
     public static void getRoots_PositiveCase_Test(
         final QuadraticTrinomial polynomial,
-        final PolynomialRoot[] expectedRoots
+        final PolynomialRoot... expectedRoots
     ) {
         PolynomialRoot[] actualRoots = polynomial.getRoots();
         assertEquals(actualRoots, expectedRoots);
@@ -61,7 +61,28 @@ public class QuadraticTrinomialTest {
     @DataProvider
     public static Object[][] getRoots_PositiveCase_Data() {
         return new Object[][] {
-            { }
+            {
+                new QuadraticTrinomial(new double[] { -5.0, 4.0, 1.0 }),
+                new PolynomialRoot(-5.0, 0.0),
+                new PolynomialRoot(1.0, 0.0)
+            }, {
+                new QuadraticTrinomial(new double[] { 5.0, 4.0, 1.0 }),
+                new PolynomialRoot(-2.0, 1.0),
+                new PolynomialRoot(-2.0, -1.0)
+            }, {
+                new QuadraticTrinomial(new double[] { 1.0, 2.0, 1.0 }),
+                new PolynomialRoot(-1.0, 0.0),
+                new PolynomialRoot(-1.0, 0.0)
+            }, {
+                new QuadraticTrinomial(new double[] { 1.0, 2.0, 0.0 }),
+                new PolynomialRoot(-0.5, 0.0)
+            }, {
+                new QuadraticTrinomial(new double[] { 0.0, 0.0, 0.0 }),
+                new PolynomialRoot[] { }
+            }, {
+                new QuadraticTrinomial(new double[] { 1.0, 0.0, 0.0 }),
+                new PolynomialRoot(Double.NaN, Double.NaN)
+            },
         };
     }
 }
