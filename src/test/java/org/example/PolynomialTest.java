@@ -26,6 +26,7 @@ public class PolynomialTest {
             { new double[] { 5.0, 0.0, 0.0 }, 0 },
             { new double[] { 0.0, 17.0, 0.0 }, 1 },
             { new double[] { 0.0, 17.0, 0.0, 0.0, -11.0 }, 4 },
+            { new double[] { 0.0, 17.0, 0.0, 1.0, 0.0 }, 3 },
         };
     }
 
