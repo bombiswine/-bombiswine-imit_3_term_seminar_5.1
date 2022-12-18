@@ -71,6 +71,10 @@ public class QuadraticTrinomialTest {
                 new PolynomialRoot(-2.0, 1.0),
                 new PolynomialRoot(-2.0, -1.0)
             }, {
+                new QuadraticTrinomial(new double[] { 1.0, 0.0, 1.0 }),
+                new PolynomialRoot(0.0, 1.0),
+                new PolynomialRoot(0.0, -1.0)
+            }, {
                 new QuadraticTrinomial(new double[] { 1.0, 2.0, 1.0 }),
                 new PolynomialRoot(-1.0, 0.0),
                 new PolynomialRoot(-1.0, 0.0)

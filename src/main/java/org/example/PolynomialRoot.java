@@ -6,7 +6,13 @@ final public class PolynomialRoot {
     private final double real;
     private final double imaginary;
 
-    public PolynomialRoot(final double real, final double imaginary) {
+    public PolynomialRoot(double real, double imaginary) {
+        if (Double.compare(real, -0.0) == 0) {
+            real = -real;
+        }
+        if (Double.compare(imaginary, -0.0) == 0) {
+            imaginary = -imaginary;
+        }
         this.real      = real;
         this.imaginary = imaginary;
     }
