@@ -2,7 +2,6 @@ package org.example;
 
 public class Polynomial {
     protected int      degree;
-
     protected double[] coefficients;
 
     public Polynomial(final double[] givenCoefficients) {

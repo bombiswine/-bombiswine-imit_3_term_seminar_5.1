@@ -1,5 +1,6 @@
 package org.example;
 
+import static java.lang.Double.POSITIVE_INFINITY;
 import static java.lang.Double.compare;
 
 public class QuadraticTrinomial extends Polynomial {
@@ -17,15 +18,13 @@ public class QuadraticTrinomial extends Polynomial {
     }
 
     public PolynomialRoot[] getRoots() {
-        // initially we assume that Trinomial has got no roots
-        PolynomialRoot[] solution = new PolynomialRoot[] {
-            new PolynomialRoot(Double.NaN, Double.NaN )
-        };
         PolynomialRoot x1;
         PolynomialRoot x2;
-        final double discriminant = getDiscriminant();
+        // initially we assume that Trinomial has got no roots
+        PolynomialRoot[] solution = new PolynomialRoot[] { };
 
         if (compare(coefficients[2], 0.0) != 0) {
+            final double discriminant = getDiscriminant();
             if (compare(discriminant, 0.0) >= 0) {
                 x1 = new PolynomialRoot (
                     (-coefficients[ 1 ] - Math.sqrt(discriminant)) / (2 * coefficients[ 2 ]),
@@ -51,7 +50,9 @@ public class QuadraticTrinomial extends Polynomial {
                 new PolynomialRoot(-coefficients[ 0 ] / coefficients[ 1 ], 0.0)
             };
         } else if (compare(coefficients[ 0 ], 0.0) == 0) {
-            solution = new PolynomialRoot[] { };
+            solution = new PolynomialRoot[] {
+                new PolynomialRoot(POSITIVE_INFINITY, POSITIVE_INFINITY)
+            };
         }
 
         return solution;

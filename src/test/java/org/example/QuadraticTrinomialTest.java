@@ -3,6 +3,7 @@ package org.example;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static java.lang.Double.POSITIVE_INFINITY;
 import static org.testng.Assert.*;
 
 public class QuadraticTrinomialTest {
@@ -78,10 +79,10 @@ public class QuadraticTrinomialTest {
                 new PolynomialRoot(-0.5, 0.0)
             }, {
                 new QuadraticTrinomial(new double[] { 0.0, 0.0, 0.0 }),
-                new PolynomialRoot[] { }
+                new PolynomialRoot(POSITIVE_INFINITY, POSITIVE_INFINITY)
             }, {
                 new QuadraticTrinomial(new double[] { 1.0, 0.0, 0.0 }),
-                new PolynomialRoot(Double.NaN, Double.NaN)
+                new PolynomialRoot[] { }
             },
         };
     }
